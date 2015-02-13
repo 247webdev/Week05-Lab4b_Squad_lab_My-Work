@@ -7,23 +7,35 @@ For the long weekend, we'd like you to combine your knowledge of Sinatra + SQL t
 You should have two tables, squads and students. Keep this relationship in mind when you build your tables - **One squad has many students**. We are also going to assume that all students are in squads (meaning that there can never be a student who is not part of a squad)
 
 Students should have a/an:
-
 1. Unique ID  
 2. Squad ID
 1. Name
 2. Age
 3. Spirit Animal
 
-Each squad should have a:
+CREATE TABLE students( student_id SERIAL PRIMARY KEY, squad_id INTEGER NOT NULL, name VARCHAR(50), age INTEGER, spirit_animal VARCHAR(50));
 
+ALTER TABLE students ADD CONSTRAINT squad_fk FOREIGN KEY (squad_id) REFERENCES squads (squad_id) ON DELETE NO ACTION;
+
+Each squad should have a:
 1. Unique ID
 1. Name
 2. Mascot
+
+CREATE TABLE squads( squad_id SERIAL PRIMARY KEY, name VARCHAR(50), mascot VARCHAR(50));
+
 
 Your students table should have a foreign key that links it to the squads table.
 
 ### BEFORE YOU ADD ANY ROUTES OR EVEN A LINE OF RUBY CODE, TEST YOUR DATA IN PSQL AND MAKE SURE YOU CAN SUCCESSFULLY JOIN THE TABLES
 
+-test data-
+INSERT INTO squads (name, mascot) VALUES ('squad name here', 'mascot name here');
+INSERT INTO students (squad_id, name, age, spirit_animal) VALUES ('1', 'Christian Chandler', 43, 'Penguin');
+-tests-
+UPDATE students SET squad_id=6 WHERE age=43;  # <=== does not allow command... ERROR:  insert or update on table "students" violates foreign key constraint "squad_fk"        DETAIL:  Key (squad_id)=(6) is not present in table "squads".
+DELETE FROM squads WHERE squad_id=1;  # <=== does not allow command... ERROR:  update or delete on table "squads" violates foreign key constraint "squad_fk" on table "students"        DETAIL:  Key (squad_id)=(1) is still referenced from table "students".
+UPDATE squads SET squad_id=9 WHERE squad_id=1;   # <=== does not allow command... ERROR:  update or delete on table "squads" violates foreign key constraint "squad_fk" on table "students"      DETAIL:  Key (squad_id)=(1) is still referenced from table "students".
 -------
 
 ### Routes
