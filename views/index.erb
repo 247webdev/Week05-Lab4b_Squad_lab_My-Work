@@ -1,0 +1,26 @@
+<%= erb :'partials/_header' %>
+
+      <% @squads.each do |squad| %>
+        <div class="inline">
+          <span>
+            <a href="/squads/<%= squad["squad_id"] %>">More info</a>
+          </span>
+          <span>
+            <a href="/squads/<%= squad["squad_id"] %>/edit">Edit</a>
+          </span>
+          <span><h3><%= squad["name"] %></h3></span>
+          <span><%= squad["mascot"] %></span>
+          <span>
+            <form action="/squads/<%= squad["squad_id"] %>" method="POST">
+              <input type="hidden" name="_method" value="DELETE">
+              <input type="submit" value="X">
+            </form>
+          </span>
+        </div>
+      <% end %>
+
+<% @squads.each do |squad| %>
+<%= squad %><br>
+<% end %>
+
+<%= erb :'partials/_footer' %>

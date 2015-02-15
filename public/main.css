@@ -1,0 +1,68 @@
+body {
+  font-family: sans-serif;
+  font-size: 14pt;
+  color: #777;
+  background-color: #ddd;
+}
+
+a {
+  text-decoration: none;
+}
+
+.container {
+  width: 80%;
+}
+
+.inline {
+  border: 1px solid #555;
+  border-top: none;
+  padding: 0px 10px;
+  margin: 8px 0px;
+}
+
+.inline span {
+  display: inline-block;
+  margin-left: 20px;
+}
+
+.inline span:last-child {
+  float: right;
+  margin-top: 10px;
+}
+
+.inline span:last-child input[type=submit] {
+  background-color: red;
+  color: #fff;
+  font-weight: bold;
+  padding: 10px 7px 5px 8px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0px;
+  background-color: green;
+  width: 100%;
+  text-align: center;
+  font-size: 170%;
+  padding-top: 3px;
+}
+
+.footer a:link {
+  color: #eee;
+}
+
+.footer a:visited {
+  color: #eee;
+}
+
+.footer a:hover {
+  color: #eee;
+}
+
+.footer a:active {
+  color: #eee;
+}
+
+.footer span {
+  margin-left: 20px;
+}
