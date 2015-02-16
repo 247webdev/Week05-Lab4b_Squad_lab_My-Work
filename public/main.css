@@ -39,7 +39,11 @@ a:active {
     DATA LAYOUT AND STYLING
 */
 
-.inline {
+.dataHeader {
+  background-color: #bfbfbf;
+}
+
+.inline.data {
   border: 1px solid #555;
   border-top: none;
   padding: 0px 10px;

@@ -1,10 +1,13 @@
 <%= erb :'partials/_header' %>
 
       <h2>View a squad</h2>
-      <div class="inline">
-        <span class="rowTightLeft">
-          <a href="/squads/<%= @squad["squad_id"] %>/students">Show Students</a>
-        </span>
+      <div class="inline dataHeader">
+        <span><h3>Squad Name</h3></span>
+        <span>Mascot</span>
+        <span>Delete this squad</span>
+      </div>
+
+      <div class="inline data">
         <span class="rowTightLeft">
           <a href="/squads/<%= @squad["squad_id"] %>/edit">Edit</a>
         </span>
@@ -16,6 +19,10 @@
             <input type="submit" value="X" class="delete"> <!-- ON HOVER ==> show "Delete this Squad?<br>Must not have any students assigned to it." -->
           </form>
         </span>
+      </div>
+
+      <div>
+        <a href="/squads/<%= @squad["squad_id"] %>/students">Show Students</a>
       </div>
 
 <%= erb :'partials/_footer' %>

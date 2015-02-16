@@ -29,6 +29,7 @@ get '/squads' do
       end
   end
   @squads = squads
+  p @squads.count
   erb :index
 end
 
@@ -50,19 +51,15 @@ get '/squads/:squad_id/edit' do
   squad_id = params[:squad_id].to_i
   squad = @conn.exec("SELECT * FROM squads WHERE squad_id=$1", [squad_id])
   @squad = squad[0]
-  students = @conn.exec("SELECT * FROM students WHERE squad_id=$1", [squad_id])
-  @student_count = students.length
+
+  students = []
+  @conn.exec("SELECT * FROM students WHERE squad_id=$1", [squad_id]) do |result|
+      result.each do |student|
+        students << student
+      end
+  end
   @students = students
-  
-# Debugging output to terminal
-  p "___________________________________________________________"
-  p "                     squad                                "
-  p @squad
-  p "                     students                                "
-  p @students
-  p "                                                           "
-  p "___________________________________________________________"
-# END debugging
+
   erb :edit
 end
 
@@ -127,9 +124,9 @@ end
 # This adds a pre-set Squad list for a quick re-population
 # I know this normally would be defined as a post route by the link to this route is an <a>. Doing this way for convenience.
 get '/repopulate_squads' do
-  @conn.exec("INSERT INTO squads (name,mascot) VALUES ('TEST - Best Name Ever','My Little Pony')")
-  @conn.exec("INSERT INTO squads (name,mascot) VALUES ('TEST - Bad Ass','Three toed sloth')")
-  @conn.exec("INSERT INTO squads (name,mascot) VALUES ('TEST - Party of 5','Horny Toad')")
+  @conn.exec("INSERT INTO squads (name,mascot) VALUES ('TEST-Best Name Ever','My Little Pony')")
+  @conn.exec("INSERT INTO squads (name,mascot) VALUES ('TEST-Bad Ass','Three toed sloth')")
+  @conn.exec("INSERT INTO squads (name,mascot) VALUES ('TEST-Party of 5','Horny Toad')")
   redirect to '/squads'
 end
 
@@ -155,5 +152,17 @@ end
 #   p "                                                           "
 #   p "___________________________________________________________"
 # # END debugging
+
+# # Debugging output to terminal
+#   p "___________________________________________________________"
+#   p "                     squad                                "
+#   p @squad
+#   p "                     students                                "
+#   p @students
+#   p "                                                           "
+#   p "___________________________________________________________"
+# # END debugging
+
+#   binding.pry
 
 

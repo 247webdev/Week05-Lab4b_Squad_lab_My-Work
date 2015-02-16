@@ -1,7 +1,7 @@
 $(document).ready(function(){
-  $('.delete').on("click", function(){
+  $('.delete').on("click", function(e){
 
-    $('.delete').css("position", "relative").css("top","2px").css("left","2px");
+    e.target.css("position", "relative").css("top","2px").css("left","2px");
 
   });
 });
