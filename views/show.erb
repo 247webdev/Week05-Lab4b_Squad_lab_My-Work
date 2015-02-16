@@ -1,3 +1,21 @@
 <%= erb :'partials/_header' %>
 
+      <h2>View a squad</h2>
+      <div class="inline">
+        <span class="rowTightLeft">
+          <a href="/squads/<%= @squad["squad_id"] %>/students">Show Students</a>
+        </span>
+        <span class="rowTightLeft">
+          <a href="/squads/<%= @squad["squad_id"] %>/edit">Edit</a>
+        </span>
+        <span><h3><%= @squad["name"] %></h3></span>
+        <span><%= @squad["mascot"] %></span>
+        <span>
+          <form action="/squads/<%= @squad["squad_id"] %>" method="POST">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="submit" value="X" class="delete"> <!-- ON HOVER ==> show "Delete this Squad?<br>Must not have any students assigned to it." -->
+          </form>
+        </span>
+      </div>
+
 <%= erb :'partials/_footer' %>

@@ -1,3 +1,18 @@
 <%= erb :'partials/_header' %>
 
+      <h2>Add a squad</h2>
+      <div class="inline">
+        <form action="/squads" method="POST">
+          <span>
+            <label for="name">Name</label>&nbsp;<input type="text" name="name" id="name" autofocus required>
+          </span>
+          <span>
+            <label for="mascot">Mascot</label>&nbsp;<input type="text" name="mascot" id="mascot" required>
+          </span>
+          <span>
+            <input type="submit" value="Add" class="add">
+          </span>
+        </form>
+      </div>
+
 <%= erb :'partials/_footer' %>

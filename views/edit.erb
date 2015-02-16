@@ -1,3 +1,27 @@
 <%= erb :'partials/_header' %>
 
+      <h2>Edit a squad</h2>
+      <div class="inline">
+        <form action="/squads/<%= @squad["squad_id"] %>" method="POST">
+          <span class="rowTightLeft">
+            <a href="/squads/<%= @squad["squad_id"] %>/students">Edit Students</a> <!-- no href but jQuery show a indented list under the squad's info -->
+          </span>
+          <span>
+            <label for="name">Name: </label>
+            <input type="text" name="name" id="name" value="<%= @squad["name"] %>" autofocus tabindex=1>
+          </span>
+          <span>
+            <label for="mascot">Mascot: </label>
+            <input type="text" name="mascot" id="mascot" value="<%= @squad["mascot"] %>" tabindex=2>
+          </span>
+          <span>
+            <!-- # < student_count = @students.length %> -->
+            Squad has&nbsp;<%= @student_count %>">&nbsp;students
+          </span>
+
+          <input type="hidden" name="_method" value="PUT">
+          <input type="submit" value="Done" class="done">
+        </form>
+      </div>
+
 <%= erb :'partials/_footer' %>

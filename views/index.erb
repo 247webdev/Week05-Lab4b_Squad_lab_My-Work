@@ -1,11 +1,13 @@
 <%= erb :'partials/_header' %>
 
+<!--       if more that one squad, plural, if just one singular, if no squads, don't show the layout but display "There are no squads "-->
+      <h2>All squad(s)</h2>
       <% @squads.each do |squad| %>
         <div class="inline">
-          <span>
+          <span class="rowTightLeft">
             <a href="/squads/<%= squad["squad_id"] %>">More info</a>
           </span>
-          <span>
+          <span class="rowTightLeft">
             <a href="/squads/<%= squad["squad_id"] %>/edit">Edit</a>
           </span>
           <span><h3><%= squad["name"] %></h3></span>
@@ -13,7 +15,7 @@
           <span>
             <form action="/squads/<%= squad["squad_id"] %>" method="POST">
               <input type="hidden" name="_method" value="DELETE">
-              <input type="submit" value="X">
+              <input type="submit" value="X" class="delete"> <!-- ON HOVER ==> show "Delete this Squad?<br>Must not have any students assigned to it." -->
             </form>
           </span>
         </div>
@@ -22,5 +24,6 @@
 <% @squads.each do |squad| %>
 <%= squad %><br>
 <% end %>
+<div class="spacer">That's all folks!</div>
 
 <%= erb :'partials/_footer' %>

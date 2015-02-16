@@ -1,7 +1,7 @@
 body {
   font-family: sans-serif;
   font-size: 14pt;
-  color: #777;
+  color: #3c3c3c;
   background-color: #ddd;
 }
 
@@ -9,9 +9,35 @@ a {
   text-decoration: none;
 }
 
-.container {
-  width: 80%;
+a:link, a:visited, a:hover, a:active{
+  color: #000;
 }
+
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a:active {
+  position: relative;
+  top: 2px;
+  left: 2px;
+}
+
+/* 
+    GENERAL BODY LAYOUT
+*/
+
+.container {
+  width: 70%;
+}
+
+/* 
+    DATA LAYOUT AND STYLING
+*/
 
 .inline {
   border: 1px solid #555;
@@ -25,26 +51,75 @@ a {
   margin-left: 20px;
 }
 
-.inline span:last-child {
-  float: right;
-  margin-top: 10px;
+.inline .rowTightLeft {
+  margin-left: -2px;
+  padding: 4px 4px 0px 4px;
+  border: 2px solid #e88b1a;
+  border-radius: 8px;
 }
 
-.inline span:last-child input[type=submit] {
+.inline span:last-child, .inline input:last-child {
+  float: right;
+}
+
+label {
+  padding: 5px;
+}
+
+/* 
+    BUTTON STYLING
+*/
+
+.delete {
+  padding: 6px 6px 2px 6px;
+  border: 2px solid #000;
+  border-radius: 30px;
   background-color: red;
   color: #fff;
   font-weight: bold;
-  padding: 10px 7px 5px 8px;
+  margin-top: 10px;
+}
+
+.add {
+  padding: 6px 6px 2px 6px;
+  border: 2px solid #000;
+  border-radius: 30px;
+  background-color: green;
+  color: #fff;
+  font-weight: bold;
+  margin-top: -3px;
+}
+
+.done {
+  padding: 6px 6px 2px 6px;
+  border: 2px solid #000;
+  border-radius: 30px;
+  background-color: yellow;
+  color: #000;
+  font-weight: bold;
+  margin-top: -3px;
+}
+
+/* 
+    FOOTER
+*/
+
+div.spacer {
+  height: 70px;
 }
 
 .footer {
-  position: absolute;
+  position: fixed;
   bottom: 0px;
-  background-color: green;
   width: 100%;
+  font-size: 120%;
   text-align: center;
-  font-size: 170%;
-  padding-top: 3px;
+  background-color: green;
+  margin-bottom: 0px;
+}
+
+.footer li {
+  display: inline;
 }
 
 .footer a:link {
@@ -63,6 +138,13 @@ a {
   color: #eee;
 }
 
-.footer span {
-  margin-left: 20px;
+.footer li {
+  margin-left: 10px;
+}
+
+.footer li.double {
+  font-size: 150%;
+  position: relative;
+  top: 6px;
+  color: #eee;
 }
